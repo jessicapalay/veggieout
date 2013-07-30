@@ -1,4 +1,6 @@
-# Freshit a really cool way to track how good you've been
+# Freshit 
+
+A really cool way to track how good you've been
 
 ## Setup
 
