@@ -24,3 +24,14 @@ $ rake db:migrate
 - [ ] As a user, I should be able to see a graph on these behaviors over the last week, month, year
 - [ ] As a user, I should be able to 'follow' other users
 - [ ] As a user, I should be able to share and see the statistics of my 'friends'
+
+# Sitemap
+
+```
+/users/:id
+/users
+/users/sign_up
+/users/sign_in
+/users/:id/edit
+/
+```
