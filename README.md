@@ -25,7 +25,7 @@ $ rake db:migrate
 - [ ] As a user, I should be able to 'follow' other users
 - [ ] As a user, I should be able to share and see the statistics of my 'friends'
 
-# Sitemap
+## Sitemap
 
 ```
 /users/:id
@@ -35,3 +35,42 @@ $ rake db:migrate
 /users/:id/edit
 /
 ```
+
+## Models
+
+```
+User
+  name
+  email
+  password
+  password_confirmation
+  
+Vegetable
+  count / how_many_i_ate / servings
+  kind
+
+Fruit
+  count / how_many_i_ate / servings
+  kind
+  
+Activity
+  count / number_of_minutes
+  kind
+  calories burned
+  
+Relaxation
+  count / number_of_minutes
+  kind
+  
+Sleep
+  count / number_of_hours_and_minutes
+  
+Follow
+  follower_id
+  followee_id
+  
+Comment
+  body <string>
+  favorited <boolean>
+```
+  
