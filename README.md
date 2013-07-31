@@ -1,4 +1,4 @@
-# Freshit 
+# Veggieout 
 
 A really cool way to track how good you've been
 
