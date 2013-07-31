@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Freshit::Application.load_tasks
+Veggieout::Application.load_tasks
