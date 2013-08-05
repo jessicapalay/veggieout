@@ -5,5 +5,7 @@ Veggieout::Application.routes.draw do
   
   devise_for :users
 
+  resources :users, only: [:show] # create a route for users#show
+
   root to: 'welcome#index'
 end
