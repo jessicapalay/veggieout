@@ -1,4 +1,6 @@
 Veggieout::Application.routes.draw do
+  get "vegetable/create"
+
   get "welcome/index"
 
   get "welcome/about"
@@ -6,6 +8,8 @@ Veggieout::Application.routes.draw do
   devise_for :users
 
   resources :users, only: [:show] # create a route for users#show
+
+  resources :vegetables, only: [:create, :destroy]
 
   root to: 'welcome#index'
 end
