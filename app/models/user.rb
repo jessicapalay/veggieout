@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar
   # attr_accessible :title, :body
   mount_uploader :avatar, AvatarUploader
+
+  def last_weeks_vegetable_data
+  	[Vegetable.count, 3, 1, 4, 10]
+  end
 end

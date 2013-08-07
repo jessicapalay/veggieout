@@ -4,6 +4,6 @@ class VegetablesController < ApplicationController
   	vegetable = Vegetable.new(params[:vegetable])
   	vegetable.save!
 
-  	redirect_to user_show_path
+  	redirect_to user_path(current_user)
   end
 end

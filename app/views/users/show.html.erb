@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span6">
+  <div class="span4">
   	<div class="media-body">
         <h2 class="media-heading"><%= @user.name %></h2>
     </div>
@@ -10,12 +10,15 @@
     </div>
   </div>
 
-  <div class="span6 pull-right">
+  <div class="span8 pull-right">
     <h3> Add a vegetable </h3>
-      <%= form_for Vegetable.new do |form| %>
-        <%= form.text_field :name %>
-        <%= form.submit :add %>
+      <%= form_for Vegetable.new, html: { class: "form-inline" } do |form| %>
+        <%= form.text_field :name, class: "form-control", placeholder: "name" %>
+        <%= form.number_field :count, class: "form-control", placeholder: "count" %>
+        <%= form.submit :add, class: "btn btn-default" %>
       <% end %> 
+
+      <canvas id="vegetables-chart"></canvas>
 
       <% Vegetable.all.each do |vegetable| %>
         <p> <%= vegetable.name %> </p>
@@ -63,3 +66,16 @@
 
   
 </div>
+
+<script>
+  window.VeggieOut = {};
+  VeggieOut.data   = {};
+  VeggieOut.data.vegetableData = {
+    labels: ["M", "T", "W", "Th", "F"],
+    datasets: [
+      {
+        data: <%= current_user.last_weeks_vegetable_data.to_json %>
+      }
+    ]
+  }
+</script>

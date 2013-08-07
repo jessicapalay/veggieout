@@ -3,6 +3,6 @@ class SleepsController < ApplicationController
   	sleep = Sleep.new(params[:sleep])
   	sleep.save!
 
-  	redirect_to user_show_path
+  	redirect_to user_path(current_user)
   end
 end
