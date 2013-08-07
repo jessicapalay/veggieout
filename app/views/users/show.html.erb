@@ -9,5 +9,57 @@
       <% end %>
     </div>
   </div>
+
+  <div class="span6 pull-right">
+    <h3> Add a vegetable </h3>
+      <%= form_for Vegetable.new do |form| %>
+        <%= form.text_field :name %>
+        <%= form.submit :add %>
+      <% end %> 
+
+      <% Vegetable.all.each do |vegetable| %>
+        <p> <%= vegetable.name %> </p>
+      <% end %>
+
+      <h3> Add a fruit </h3>
+      <%= form_for Fruit.new do |form| %>
+        <%= form.text_field :name %>
+        <%= form.submit :add %>
+      <% end %> 
+
+      <% Fruit.all.each do |fruit| %>
+        <p> <%= fruit.name %> </p>
+      <% end %>
+
+      <h3> Add an activity </h3>
+      <%= form_for Activity.new do |form| %>
+        <%= form.text_field :name %>
+        <%= form.submit :add %>
+      <% end %> 
+
+      <% Activity.all.each do |activity| %>
+        <p> <%= activity.name %> </p>
+      <% end %>
+
+      <h3> Add a form of relaxation </h3>
+      <%= form_for Relaxation.new do |form| %>
+        <%= form.text_field :name %>
+        <%= form.submit :add %>
+      <% end %> 
+
+      <% Relaxation.all.each do |relaxation| %>
+        <p> <%= relaxation.name %> </p>
+      <% end %>
+
+       <h3> Add how many hours you slept </h3>
+      <%= form_for Sleep.new do |form| %>
+        <%= form.text_field :name %>
+        <%= form.submit :add %>
+      <% end %> 
+
+      <% Sleep.all.each do |sleep| %>
+        <p> <%= sleep.name %> </p>
+      <% end %>
+    </div>
   
 </div>
