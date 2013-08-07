@@ -9,7 +9,15 @@ Veggieout::Application.routes.draw do
 
   resources :users, only: [:show] # create a route for users#show
 
-  resources :vegetables, only: [:create, :destroy]
+  resources :vegetables, only: [:create]
+
+  resources :fruits, only: [:create]
+
+  resources :activities, only: [:create]
+
+  resources :relaxations, only: [:create]
+
+  resources :sleeps, only: [:create]
 
   root to: 'welcome#index'
 end
