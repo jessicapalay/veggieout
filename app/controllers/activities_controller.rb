@@ -3,6 +3,6 @@ class ActivitiesController < ApplicationController
   	activity = Activity.new(params[:activity])
   	activity.save!
 
-  	redirect_to user_path
+  	redirect_to user_path(current_user)
   end
 end

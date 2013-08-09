@@ -1,6 +1,14 @@
 Veggieout::Application.routes.draw do
   get "vegetable/create"
 
+  get "fruit/create"
+
+  get "activiy/create"
+
+  get "relaxation/create"
+
+  get "sleep/create"
+
   get "welcome/index"
 
   get "welcome/about"

@@ -3,6 +3,6 @@ class FruitsController < ApplicationController
   	fruit = Fruit.new(params[:fruit])
   	fruit.save!
 
-  	redirect_to user_path
+  	redirect_to user_path(current_user)
   end
 end

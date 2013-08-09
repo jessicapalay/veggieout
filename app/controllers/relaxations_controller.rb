@@ -3,6 +3,6 @@ class RelaxationsController < ApplicationController
   	relaxation = Relaxation.new(params[:relaxation])
   	relaxation.save!
 
-  	redirect_to user_path
+  	redirect_to user_path(current_user)
   end
 end

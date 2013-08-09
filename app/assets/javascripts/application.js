@@ -26,3 +26,47 @@ $(function() {
 		myNewChart.Line(VeggieOut.data.vegetableData);
   }
 });
+
+$(function() {
+  if ($("#fruit-chart").length > 0) {
+    //Get context with jQuery - using jQuery's .get() method.
+		var ctx = $("#fruit-chart").get(0).getContext("2d");
+		//This will get the first returned node in the jQuery collection.
+		var myNewChart = new Chart(ctx);
+    
+		myNewChart.Line(VeggieOut.data.fruitData);
+  }
+});
+
+$(function() {
+  if ($("#activity-chart").length > 0) {
+    //Get context with jQuery - using jQuery's .get() method.
+		var ctx = $("#activity-chart").get(0).getContext("2d");
+		//This will get the first returned node in the jQuery collection.
+		var myNewChart = new Chart(ctx);
+    
+		myNewChart.Line(VeggieOut.data.activityData);
+  }
+});
+
+$(function() {
+  if ($("#relaxation-chart").length > 0) {
+    //Get context with jQuery - using jQuery's .get() method.
+		var ctx = $("#relaxation-chart").get(0).getContext("2d");
+		//This will get the first returned node in the jQuery collection.
+		var myNewChart = new Chart(ctx);
+    
+		myNewChart.Line(VeggieOut.data.relaxationData);
+  }
+});
+
+$(function() {
+  if ($("#sleep-chart").length > 0) {
+    //Get context with jQuery - using jQuery's .get() method.
+		var ctx = $("#sleep-chart").get(0).getContext("2d");
+		//This will get the first returned node in the jQuery collection.
+		var myNewChart = new Chart(ctx);
+    
+		myNewChart.Line(VeggieOut.data.sleepData);
+  }
+});
