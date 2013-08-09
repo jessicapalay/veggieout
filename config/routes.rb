@@ -15,7 +15,10 @@ Veggieout::Application.routes.draw do
   
   devise_for :users
 
-  resources :users, only: [:show] # create a route for users#show
+  resources :users, only: [:show] do
+    get :timeline, on: :member # /users/:id/timeline
+    # get :timeline, on: :collection # /users/timeline
+  end # create a route for users#show
 
   resources :vegetables, only: [:create]
 

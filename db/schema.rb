@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807185111) do
+ActiveRecord::Schema.define(:version => 20130809202135) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20130807185111) do
     t.integer  "calories_burned"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
   end
 
   create_table "fruits", :force => true do |t|
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130807185111) do
     t.integer  "count"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "relaxations", :force => true do |t|
@@ -33,12 +35,14 @@ ActiveRecord::Schema.define(:version => 20130807185111) do
     t.integer  "count"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "sleeps", :force => true do |t|
     t.integer  "count"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
@@ -70,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20130807185111) do
     t.integer  "count"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
 end

@@ -1,22 +1,9 @@
  <h3>Timeline</h3>
- 
+
  <canvas id="summary-chart"></canvas>
 
  <script>
   window.VeggieOut = {};
   VeggieOut.data   = {};
-  VeggieOut.data.summaryData = {
-    labels: ["M", "T", "W", "Th", "F"],
-    datasets: [
-      {
-        data: <%= current_user.last_weeks_vegetable_data.to_json %>
-        data: <%= current_user.last_weeks_fruit_data.to_json %>
-        data: <%= current_user.last_weeks_activity_data.to_json %>
-        data: <%= current_user.last_weeks_relaxation_data.to_json %>
-        data: <%= current_user.last_weeks_sleep_data.to_json %>
-      }
-    ]
-  }
+  VeggieOut.data.summaryData = <%= current_user.summary_data.to_json.html_safe %>
 </script>
-
- 
