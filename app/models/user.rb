@@ -16,72 +16,88 @@ class User < ActiveRecord::Base
   has_many :relaxations
   has_many :sleeps
 
-  def last_weeks_vegetable_data
-    7.downto(1).map do |i|
+  def vegetable_data_from(days_ago)
+    days_ago.downto(1).map do |i|
       vegetables.where("created_at > ? AND created_at < ?", i.days.ago.beginning_of_day, i.days.ago.end_of_day).count
     end
   end
 
-  def last_weeks_fruit_data
-    7.downto(1).map do |i|
+  def fruit_data_from(days_ago)
+    days_ago.downto(1).map do |i|
       fruits.where("created_at > ? AND created_at < ?", i.days.ago.beginning_of_day, i.days.ago.end_of_day).count
     end
   end
 
-  def last_weeks_activity_data
-    7.downto(1).map do |i|
+  def activity_data_from(days_ago)
+    days_ago.downto(1).map do |i|
       activities.where("created_at > ? AND created_at < ?", i.days.ago.beginning_of_day, i.days.ago.end_of_day).count
     end
   end
 
-  def last_weeks_relaxation_data
-    7.downto(1).map do |i|
+  def relaxation_data_from(days_ago)
+    days_ago.downto(1).map do |i|
       relaxations.where("created_at > ? AND created_at < ?", i.days.ago.beginning_of_day, i.days.ago.end_of_day).count
     end
   end
 
-  def last_weeks_sleep_data
-    7.downto(1).map do |i|
+  def sleep_data_from(days_ago)
+    days_ago.downto(1).map do |i|
       sleeps.where("created_at > ? AND created_at < ?", i.days.ago.beginning_of_day, i.days.ago.end_of_day).count
     end
   end
 
-  def summary_data
-      labels = 7.downto(1).map do |i|
-        i.days.ago.strftime("%a")
-      end
+  def summary_data(options={})
 
-      {
-        labels: labels,
-        datasets: [
+      if options[:interval] == "week"
+        labels = 7.downto(1).map do |i|
+          i.days.ago.strftime("%a")
+        end
+
+        {
+          labels: labels,
+          datasets: [
+            {
+              data: vegetable_data_from(7)
+            },
+            {
+              data: fruit_data_from(7)
+            },
+            {
+              data: activity_data_from(7)
+            },
+            {
+              data: relaxation_data_from(7)
+            },
+            {
+              data: sleep_data_from(7)
+            }
+          ]
+        }
+      elsif options[:interval] == "month"
+        labels = 30.downto(1).map do |i|
+            i.days.ago.strftime("%a")
+          end
+
           {
-            data: last_weeks_vegetable_data
-          },
-          {
-            data: last_weeks_fruit_data
-          },
-          {
-            data: last_weeks_activity_data
-          },
-          {
-            data: last_weeks_relaxation_data
-          },
-          {
-            data: last_weeks_sleep_data
+            labels: labels,
+            datasets: [
+              {
+                data: vegetable_data_from(30)
+              },
+              {
+                data: fruit_data_from(30)
+              },
+              {
+                data: activity_data_from(30)
+              },
+              {
+                data: relaxation_data_from(30)
+              },
+              {
+                data: sleep_data_from(30)
+              }
+            ]
           }
-        ]
-      }
-      # {
-      #   data: last_weeks_fruit_data
-      # },
-      # {
-      #   data: last_weeks_activity_data
-      # },
-      # {
-      #   data: last_weeks_relaxation_data
-      # },
-      # {
-      #   data: last_weeks_sleep_data
-      # }
+      end
   end
 end

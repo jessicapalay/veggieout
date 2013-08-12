@@ -23,10 +23,30 @@ $(function() {
 		var ctx = $("#summary-chart").get(0).getContext("2d");
 		//This will get the first returned node in the jQuery collection.
 		var myNewChart = new Chart(ctx);
+
+		$("#week-button").click(function() {
+    	$.get("/users/1/data?interval=7", function(response) {
+	    	myNewChart.Line(response);
+	    });
+    })
     
-		myNewChart.Line(VeggieOut.data.summaryData);
+    $("#month-button").click(function() {
+    	$.get("/users/1/data?interval=30", function(response) {
+	    	myNewChart.Line(response);
+	    });
+    })
+
+    $("#year-button").click(function() {
+	    $.get("/users/1/data?interval=365", function(response) {
+	    	myNewChart.Line(response);
+	    });
+    })
+
+
+    // get("/users/1/data?interval=30") do |response|
+    // end
   }
-  
+
   if ($("#vegetables-chart").length > 0) {
     //Get context with jQuery - using jQuery's .get() method.
 		var ctx = $("#vegetables-chart").get(0).getContext("2d");

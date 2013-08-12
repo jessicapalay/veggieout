@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span3">
+  <div class="span12">
   	<div class="media-body">
         <h2 class="media-heading"><%= @user.name %></h2>
     </div>
@@ -9,40 +9,31 @@
       <% end %>
     </div>
   </div>
+</div>
 
-   <div class="span7">
-
-    <h3> Add a vegetable </h3>
-      <%= form_for Vegetable.new, html: { class: "form-inline" } do |form| %>
-        <%= form.text_field :name, class: "form-control", placeholder: "name" %>
-        <%= form.number_field :count, class: "form-control", placeholder: "count" %>
-        <%= form.submit :add, class: "btn btn-default" %>
-      <% end %> 
-
+  <div class="row">
+     <div class="span6">
+        <h3> Add a vegetable </h3>
+        <%= form_for Vegetable.new, html: { class: "form-inline" } do |form| %>
+          <%= form.text_field :name, class: "form-control", placeholder: "name" %>
+          <%= form.number_field :count, class: "input-small", placeholder: "count" %>
+          <%= form.submit :add, class: "btn btn-default" %>
+        <% end %> 
+    </div>
+    <div class="span6">
       <% Vegetable.all.each do |vegetable| %>
         <p class="form-control-static"> <%= vegetable.name %> </p>
       <% end %>
- 
-    <canvas id="vegetables-chart"></canvas>
+    </div>
+  </div>
 
-      <script>
-       window.VeggieOut = {};
-        VeggieOut.data   = {};
-        VeggieOut.data.vegetableData = {
-          labels: ["M", "T", "W", "Th", "F"],
-          datasets: [
-          {
-            data: <%= current_user.last_weeks_vegetable_data.to_json %>
-          }
-          ]
-        }
-      </script>
+
  
 
       <h3> Add a fruit </h3>
       <%= form_for Fruit.new, html: { class: "form-inline" } do |form| %>
         <%= form.text_field :name, class: "form-control", placeholder: "name" %>
-        <%= form.number_field :count, class: "form-control", placeholder: "count" %>
+        <%= form.number_field :count, class: "input-small", placeholder: "count" %>
         <%= form.submit :add, class: "btn btn-default" %>
       <% end %> 
 
@@ -50,25 +41,10 @@
         <p> <%= fruit.name %> </p>
       <% end %>
 
-      <canvas id="fruit-chart"></canvas>
-
-      <script>
-       window.VeggieOut = {};
-        VeggieOut.data   = {};
-        VeggieOut.data.fruitData = {
-          labels: ["M", "T", "W", "Th", "F"],
-          datasets: [
-          {
-            data: <%= current_user.last_weeks_fruit_data.to_json %>
-          }
-          ]
-        }
-      </script>
-
       <h3> Add an activity </h3>
       <%= form_for Activity.new, html: { class: "form-inline" } do |form| %>
         <%= form.text_field :name, class: "form-control", placeholder: "name" %>
-        <%= form.number_field :count, class: "form-control", placeholder: "number of hours" %>
+        <%= form.number_field :count, class: "input-small", placeholder: "number of hours" %>
         <%= form.submit :add, class: "btn btn-default" %>
       <% end %> 
 
@@ -76,26 +52,11 @@
         <p> <%= activity.name %> </p>
       <% end %>
 
-      <canvas id="activity-chart"></canvas>
-
-      <script>
-       window.VeggieOut = {};
-        VeggieOut.data   = {};
-        VeggieOut.data.activityData = {
-          labels: ["M", "T", "W", "Th", "F"],
-          datasets: [
-          {
-            data: <%= current_user.last_weeks_activity_data.to_json %>
-          }
-          ]
-        }
-      </script>
-
 
       <h3> Add a form of relaxation </h3>
       <%= form_for Relaxation.new, html: { class: "form-inline" } do |form| %>
         <%= form.text_field :name, class: "form-control", placeholder: "form of relaxation" %>
-        <%= form.number_field :count, class: "form-control 110px x 30px", placeholder: "number of hours" %>
+        <%= form.number_field :count, class: "input-small", placeholder: "number of hours" %>
         <%= form.submit :add, class: "btn btn-default" %>
       <% end %> 
 
@@ -103,21 +64,6 @@
         <p> <%= relaxation.name %> </p>
       <% end %>
 
-
-      <canvas id="relxation-chart"></canvas>
-
-      <script>
-       window.VeggieOut = {};
-        VeggieOut.data   = {};
-        VeggieOut.data.relaxationData = {
-          labels: ["M", "T", "W", "Th", "F"],
-          datasets: [
-          {
-            data: <%= current_user.last_weeks_relaxation_data.to_json %>
-          }
-          ]
-        }
-      </script>
 
        <h3> Add number of hours slept </h3>
       <%= form_for Sleep.new, html: { class: "form-inline" } do |form| %>
@@ -129,21 +75,12 @@
         <p> <%= sleep.name %> </p>
       <% end %>
 
-      <canvas id="sleep-chart"></canvas>
-
-      <script>
-       window.VeggieOut = {};
-        VeggieOut.data   = {};
-        VeggieOut.data.sleepData = {
-          labels: ["M", "T", "W", "Th", "F"],
-          datasets: [
-          {
-            data: <%= current_user.last_weeks_sleep_data.to_json %>
-          }
-          ]
-        }
-      </script>
   </div>
  </div>
+</div>
+<div class="row">
+  <div class="col-4-6 col-lg-6">
+    <%= link_to "Timeline", timeline_user_path, class: 'btn btn-default btn-large btn-block' %> 
+  </div>
 </div>
 

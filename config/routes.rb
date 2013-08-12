@@ -17,6 +17,7 @@ Veggieout::Application.routes.draw do
 
   resources :users, only: [:show] do
     get :timeline, on: :member # /users/:id/timeline
+    get :data, on: :member
     # get :timeline, on: :collection # /users/timeline
   end # create a route for users#show
 

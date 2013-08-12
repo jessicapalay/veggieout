@@ -1,9 +1,8 @@
  <h3>Timeline</h3>
+ <div class="btn-group">
+  <button type="button" class="btn btn-default" id="week-button">Week</button>
+  <button type="button" class="btn btn-default" id="month-button">Month</button>
+  <button type="button" class="btn btn-default">Year</button>
+</div>
 
  <canvas id="summary-chart"></canvas>
-
- <script>
-  window.VeggieOut = {};
-  VeggieOut.data   = {};
-  VeggieOut.data.summaryData = <%= current_user.summary_data.to_json.html_safe %>
-</script>
