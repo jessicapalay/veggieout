@@ -1,86 +1,99 @@
 <div class="row">
-  <div class="span12">
-  	<div class="media-body">
-        <h2 class="media-heading"><%= @user.name %></h2>
-    </div>
-    <div class="media">
+  <div class="media">
+    <div class="pull-left">
       <% if @user.avatar? %>
         <%= image_tag @user.avatar.url %>
       <% end %>
     </div>
+    <div class="media-body">
+      <h2 class="media-heading"><%= @user.name %></h2>
+    </div>
   </div>
 </div>
 
-  <div class="row">
-     <div class="span6">
-        <h3> Add a vegetable </h3>
-        <%= form_for Vegetable.new, html: { class: "form-inline" } do |form| %>
-          <%= form.text_field :name, class: "form-control", placeholder: "name" %>
-          <%= form.number_field :count, class: "input-small", placeholder: "count" %>
-          <%= form.submit :add, class: "btn btn-default" %>
-        <% end %> 
-    </div>
-    <div class="span6">
+<div class="row">
+  <div class="span6">
+    <h3> Add a vegetable </h3>
+      <%= form_for Vegetable.new, html: { class: "form-inline" } do |form| %>
+        <%= form.text_field :name, class: "form-control", placeholder: "name" %>
+        <%= form.number_field :count, class: "input-small", placeholder: "count" %>
+        <%= form.submit :add, class: "btn btn-default" %>
+      <% end %> 
+  </div>
+  <div class="well span6">
+    <div class="progress"> 
+      <div class="bar" style="width: #{<%= div(Vegetable.all.count %>)10 * 100}%;"></div>
       <% Vegetable.all.each do |vegetable| %>
         <p class="form-control-static"> <%= vegetable.name %> </p>
       <% end %>
     </div>
   </div>
+</div>
 
-
- 
-
-      <h3> Add a fruit </h3>
+<div class="row">
+  <div class="span6">
+    <h3> Add a fruit </h3>
       <%= form_for Fruit.new, html: { class: "form-inline" } do |form| %>
         <%= form.text_field :name, class: "form-control", placeholder: "name" %>
         <%= form.number_field :count, class: "input-small", placeholder: "count" %>
         <%= form.submit :add, class: "btn btn-default" %>
       <% end %> 
+  </div>
+  <div class="span6">
+    <% Fruit.all.each do |fruit| %>
+      <p> <%= fruit.name %> </p>
+    <% end %>
+  </div>
+</div>
 
-      <% Fruit.all.each do |fruit| %>
-        <p> <%= fruit.name %> </p>
-      <% end %>
-
-      <h3> Add an activity </h3>
+<div class="row">
+  <div class="span6">
+    <h3> Add an activity </h3>
       <%= form_for Activity.new, html: { class: "form-inline" } do |form| %>
         <%= form.text_field :name, class: "form-control", placeholder: "name" %>
         <%= form.number_field :count, class: "input-small", placeholder: "number of hours" %>
         <%= form.submit :add, class: "btn btn-default" %>
       <% end %> 
+  </div>
+  <div class="span6">
+    <% Activity.all.each do |activity| %>
+      <p> <%= activity.name %> </p>
+    <% end %>
+  </div>
+</div>
 
-      <% Activity.all.each do |activity| %>
-        <p> <%= activity.name %> </p>
-      <% end %>
-
-
-      <h3> Add a form of relaxation </h3>
+<div class="row">
+  <div class="span6">
+    <h3> Add a form of relaxation </h3>
       <%= form_for Relaxation.new, html: { class: "form-inline" } do |form| %>
         <%= form.text_field :name, class: "form-control", placeholder: "form of relaxation" %>
         <%= form.number_field :count, class: "input-small", placeholder: "number of hours" %>
         <%= form.submit :add, class: "btn btn-default" %>
       <% end %> 
+  </div>
+  <div class="span6">
+    <% Relaxation.all.each do |relaxation| %>
+      <p> <%= relaxation.name %> </p>
+    <% end %>
+  </div>
+</div>
 
-      <% Relaxation.all.each do |relaxation| %>
-        <p> <%= relaxation.name %> </p>
-      <% end %>
-
-
-       <h3> Add number of hours slept </h3>
+<div class="row">
+  <div class="span6">
+     <h3> Add number of hours slept </h3>
       <%= form_for Sleep.new, html: { class: "form-inline" } do |form| %>
         <%= form.text_field :count, class: "form-control", placeholder: "number of hours" %>
         <%= form.submit :add, class: "btn btn-default" %>
       <% end %> 
-
-      <% Sleep.all.each do |sleep| %>
-        <p> <%= sleep.name %> </p>
-      <% end %>
-
   </div>
- </div>
-</div>
-<div class="row">
-  <div class="col-4-6 col-lg-6">
-    <%= link_to "Timeline", timeline_user_path, class: 'btn btn-default btn-large btn-block' %> 
+  <div class="span6">    
+    <% Sleep.all.each do |sleep| %>
+      <p> <%= sleep.name %> </p>
+    <% end %>
   </div>
 </div>
 
+
+<div class="hero-unit">
+    <%= link_to "Timeline", timeline_user_path, class: 'btn btn-large' %> 
+</div>
