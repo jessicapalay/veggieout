@@ -22,7 +22,8 @@
   </div>
   <div class="well span6">
     <div class="progress"> 
-      <div class="bar" style="width: #{<%= div(Vegetable.all.count %>)10 * 100}%;"></div>
+      <div class="bar" style="width: <%= Vegetable.all.count.to_f / 10.0 * 100 %>%"></div>
+    </div>
       <% Vegetable.all.each do |vegetable| %>
         <p class="form-control-static"> <%= vegetable.name %> </p>
       <% end %>
