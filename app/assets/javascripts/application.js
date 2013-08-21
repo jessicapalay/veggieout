@@ -25,19 +25,19 @@ $(function() {
 		var myNewChart = new Chart(ctx);
 
 		$("#week-button").click(function() {
-    	$.get("/users/1/data?interval=7", function(response) {
+    	$.get("/users/1/data?interval=week", function(response) {
 	    	myNewChart.Line(response);
 	    });
     })
     
     $("#month-button").click(function() {
-    	$.get("/users/1/data?interval=30", function(response) {
+    	$.get("/users/1/data?interval=month", function(response) {
 	    	myNewChart.Line(response);
 	    });
     })
 
     $("#year-button").click(function() {
-	    $.get("/users/1/data?interval=365", function(response) {
+	    $.get("/users/1/data?interval=year", function(response) {
 	    	myNewChart.Line(response);
 	    });
     })

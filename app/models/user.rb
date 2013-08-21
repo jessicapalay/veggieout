@@ -47,7 +47,6 @@ class User < ActiveRecord::Base
   end
 
   def summary_data(options={})
-
       if options[:interval] == "week"
         labels = 7.downto(1).map do |i|
           i.days.ago.strftime("%a")
