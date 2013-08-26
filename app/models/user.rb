@@ -97,6 +97,31 @@ class User < ActiveRecord::Base
               }
             ]
           }
+      elsif options[:interval] == "year"
+        labels = 365.downto(1).map do |i|
+            i.days.ago.strftime("%a")
+          end
+
+          {
+            labels: labels,
+            datasets: [
+              {
+                data: vegetable_data_from(365)
+              },
+              {
+                data: fruit_data_from(365)
+              },
+              {
+                data: activity_data_from(365)
+              },
+              {
+                data: relaxation_data_from(365)
+              },
+              {
+                data: sleep_data_from(365)
+              }
+            ]
+          }
       end
   end
 end

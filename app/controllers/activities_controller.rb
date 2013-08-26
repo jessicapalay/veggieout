@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   def create
-  	activity = Activity.new(params[:activity])
+  	activity = current_user.activities.new(params[:activity])
   	activity.save!
 
   	redirect_to user_path(current_user)

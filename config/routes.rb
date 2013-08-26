@@ -12,10 +12,11 @@ Veggieout::Application.routes.draw do
   get "welcome/index"
 
   get "welcome/about"
+
   
   devise_for :users
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :index] do
     get :timeline, on: :member # /users/:id/timeline
     get :data, on: :member
     # get :timeline, on: :collection # /users/timeline
