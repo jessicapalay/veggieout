@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="media">
+<div class="container">
+  <div class="row">
     <div class="pull-left">
       <% if @user.avatar? %>
         <%= image_tag @user.avatar.url %>
@@ -9,12 +9,16 @@
       <h2 class="media-heading"><%= @user.name %></h2>
     </div>
   </div>
-</div>
+  
 
-<div class="row">
-  <div class="media">
-    <div class="span6">
+
       <h3> Vegetables consumed </h3>
+      <div class="progress"> 
+        <div class="bar" style="width: <%= @vegetables.sum('count').to_f / 10.0 * 100 %>%"></div>
+      </div>
+        <% @vegetables.each do |vegetable| %>
+          <p class="form-control-static"> <%= vegetable.name %> </p>
+        <% end %>
       <% if current_user == @user %>
         <%= form_for Vegetable.new, html: { class: "form-inline" } do |form| %>
           <%= form.text_field :name, class: "form-control", placeholder: "name" %>
@@ -22,25 +26,16 @@
           <%= form.submit :add, class: "btn btn-default" %>
         <% end %> 
       <% end %>
-    </div>
-    <div class="well span6">
-      <div class="progress"> 
-        <div class="bar" style="width: <%= @vegetables.sum('count').to_f / 10.0 * 100 %>%"></div>
-      </div>
-        <% @vegetables.each do |vegetable| %>
-          <p class="form-control-static"> <%= vegetable.name %> </p>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+      
+    
 
-<div class="container">
-
-<div class="row">
-  <div class="media">
-    <div class="span6">
       <h3> Fruit consumed </h3>
+       <div class="progress"> 
+        <div class="bar" style="width: <%= @fruits.sum('count').to_f / 10.0 * 100 %>%"></div>
+      </div>
+        <% @fruits.each do |fruit| %>
+          <p class="form-control-static"> <%= fruit.name %> </p>
+        <% end %>
       <% if current_user == @user %>
         <%= form_for Fruit.new, html: { class: "form-inline" } do |form| %>
           <%= form.text_field :name, class: "form-control", placeholder: "name" %>
@@ -48,25 +43,16 @@
           <%= form.submit :add, class: "btn btn-default" %>
         <% end %> 
       <% end %>
-    </div>
-    <div class="well span6">
-      <div class="progress"> 
-        <div class="bar" style="width: <%= @fruits.sum('count').to_f / 10.0 * 100 %>%"></div>
-      </div>
-        <% @fruits.each do |fruit| %>
-          <p class="form-control-static"> <%= fruit.name %> </p>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+     
 
-<div class="container">
-
-<div class="row">
-  <div class="media">
-    <div class="span6">
+   
       <h3> Activities </h3>
+      <div class="progress"> 
+        <div class="bar" style="width: <%= @activities.sum('count').to_f / 60.0 * 100 %>%"></div>
+      </div>
+        <% @activities.each do |activity| %>
+          <p> <%= activity.name %> </p>
+        <% end %>
       <% if current_user == @user %>
         <%= form_for Activity.new, html: { class: "form-inline" } do |form| %>
           <%= form.text_field :name, class: "form-control", placeholder: "name" %>
@@ -74,24 +60,15 @@
           <%= form.submit :add, class: "btn btn-default" %>
         <% end %> 
       <% end %>
-    </div>
-    <div class="well span6">
-      <div class="progress"> 
-        <div class="bar" style="width: <%= @activities.sum('count').to_f / 60.0 * 100 %>%"></div>
-      </div>
-        <% @activities.each do |activity| %>
-          <p> <%= activity.name %> </p>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-
-<div class="row">
-  <div class="span6">
+      
+  
     <h3> Relaxtion </h3>
+     <div class="progress"> 
+      <div class="bar" style="width: <%= @relaxations.sum('count').to_f / 60.0 * 100 %>%"></div>
+    </div>
+      <% @relaxations.each do |relaxation| %>
+        <p> <%= relaxation.name %> </p>
+      <% end %>
     <% if current_user == @user %>
       <%= form_for Relaxation.new, html: { class: "form-inline" } do |form| %>
         <%= form.text_field :name, class: "form-control", placeholder: "form of relaxation" %>
@@ -99,44 +76,23 @@
         <%= form.submit :add, class: "btn btn-default" %>
       <% end %> 
     <% end %>
-  </div>
-  <div class="well span6">
-    <div class="progress"> 
-      <div class="bar" style="width: <%= @relaxations.sum('count').to_f / 60.0 * 100 %>%"></div>
-    </div>
-      <% @relaxations.each do |relaxation| %>
-        <p> <%= relaxation.name %> </p>
-      <% end %>
-    </div>
-  </div>
-</div>
+   
 
-<div class="container">
-
-<div class="row">
-  <div class="span6">
      <h3> Hours slept </h3>
-     <% if current_user == @user %>
-      <%= form_for Sleep.new, html: { class: "form-inline" } do |form| %>
-        <%= form.text_field :count, class: "form-control", placeholder: "number of hours" %>
-        <%= form.submit :add, class: "btn btn-default" %>
-      <% end %> 
-    <% end %>
-  </div>
-  <div class="well span6">
     <div class="progress"> 
       <div class="bar" style="width: <%= @sleeps.sum('count').to_f / 10.0 * 100 %>%"></div>
     </div>  
       <% @sleeps.each do |sleep| %>
         <p> <%= sleep.count %> </p>
       <% end %>
-    </div>
-  </div>
-</div>
-</div>
-</div>
+     <% if current_user == @user %>
+      <%= form_for Sleep.new, html: { class: "form-inline" } do |form| %>
+        <%= form.text_field :count, class: "form-control", placeholder: "number of hours" %>
+        <%= form.submit :add, class: "btn btn-default" %>
+      <% end %> 
+    <% end %>
+  
 
 
-<div class="container">
     <%= link_to "Timeline", timeline_user_path, class: 'btn btn-info btn-large btn block' %> 
 </div>
