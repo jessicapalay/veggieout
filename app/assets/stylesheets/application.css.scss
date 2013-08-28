@@ -1,3 +1,4 @@
+@import "bootstrap-custom";
 @import "bootstrap";
 
 .user-info {
@@ -8,3 +9,44 @@
   margin-top: 5px;
 }
 
+.a {
+  background: url("/assets/background/vintage_speckles.png");
+  font-family: 'Roboto' sans-serif;
+}
+
+.content {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+
+.progress.percentage {
+	position: relative;
+}
+
+span.numbar {
+	position: absolute;
+	left: 5px;
+	color: white;
+	text-shadow: 1px lightgrey;
+}
+
+.first-section{
+	padding: 20px;
+	text-align: center;
+}
+
+.second-section {
+	border-left: 1px solid #ddd;
+	box-shadow: 2px #CCC;
+	padding: 0 20px 0 50px;
+}
+
+#summary-chart {
+	position: relative;
+	right: 12px;
+}
+
+.pull-center {
+	margin-bottom: 100px;
+}

@@ -1,24 +1,32 @@
-<div class="container">
-  <div class="row">
-    <div class="pull-left">
-      <% if @user.avatar? %>
-        <%= image_tag @user.avatar.url %>
-      <% end %>
-    </div>
-    <div class="media-body">
-      <h2 class="media-heading"><%= @user.name %></h2>
-    </div>
-  </div>
-  
+<div class="container-fluid content">
+  <div class="row-fluid">
+    <div class="span4 first-section">
+      <div class="media">
+        <div class="pull-center">
+          <% if @user.avatar? %>
+            <%= image_tag @user.avatar.url %>
+          <% end %>
+          <h2 class="media-body"><%= @user.name %></h2>
+        </div>
 
+        <canvas id="summary-chart"></canvas>
 
-      <h3> Vegetables consumed </h3>
-      <div class="progress"> 
-        <div class="bar" style="width: <%= @vegetables.sum('count').to_f / 10.0 * 100 %>%"></div>
+         <div class="btn-group">
+          <button type="button" class="btn btn-default" id="week-button">Week</button>
+          <button type="button" class="btn btn-default" id="month-button">Month</button>
+          <button type="button" class="btn btn-default" id="year-button">Year</button>
+        </div>
+
+         
       </div>
-        <% @vegetables.each do |vegetable| %>
-          <p class="form-control-static"> <%= vegetable.name %> </p>
-        <% end %>
+    </div>
+
+
+    <div class="span8 second-section">
+      <h3> Vegetables consumed </h3>
+      <div class="progress percentage"> 
+        <div class="bar" style="width: <%= @vegetables.sum('count').to_f / 10.0 * 100 %>%"></div><span class="numbar"> <%= @vegetables.sum('count').to_f / 10.0 * 100 %>% </span>
+      </div>
       <% if current_user == @user %>
         <%= form_for Vegetable.new, html: { class: "form-inline" } do |form| %>
           <%= form.text_field :name, class: "form-control", placeholder: "name" %>
@@ -91,8 +99,7 @@
         <%= form.submit :add, class: "btn btn-default" %>
       <% end %> 
     <% end %>
-  
-
+  </div>
+</div>
 
     <%= link_to "Timeline", timeline_user_path, class: 'btn btn-info btn-large btn block' %> 
-</div>
