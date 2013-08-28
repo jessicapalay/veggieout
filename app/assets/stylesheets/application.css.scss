@@ -7,16 +7,34 @@
 
 .nav {
   margin-top: 5px;
+  width: 900px;
+  color: #999999;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
-.a {
-  background: url("/assets/background/vintage_speckles.png");
+$highlight: #042520;
+
+.navbar-inverse .navbar-inner {
+	background-color: $highlight;
+	background-image: none;
+	background-image: -webkit-gradient(linear, 0 0, 0 75%, from(lighten($highlight, 5)), to($highlight));
+}
+
+a {
+	color: #89B4B3;
+}
+
+
+body {
+  background: image-url("background/vintage_speckles.png");
   font-family: 'Roboto' sans-serif;
 }
+
 
 .content {
 	max-width: 1000px;
 	margin: 0 auto;
+	margin-top: 80px;
 }
 
 

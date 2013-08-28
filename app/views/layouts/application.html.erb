@@ -7,29 +7,31 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="a">
-	<div class="container">
-		<ul class="nav nav-tabs">
-      <li><%= link_to "VeggieOut", welcome_index_path %></li>
-      <li><%= link_to "About", welcome_about_path %></li>
-
-      <div class="pull-right user-info">
-        <% if current_user %>
-          <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
-          Hello <%= link_to (current_user.name || current_user.email), current_user %>!
-          <%= link_to edit_user_registration_path, class: 'btn btn-mini' do %>
-            <i class="icon-user"> </i>
-          <% end %>
-          <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-mini' do %>
-            <i class="icon-share-alt"> </i>
-          <% end %>
-        <% else %>
-          <%= link_to "Sign In", new_user_session_path %> or 
-          <%= link_to "Sign Up", new_user_registration_path %>
-        <% end %>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+    	<div class="container">
+    		<ul class="nav">
+          <li><%= link_to "VeggieOut", root_path %></li>
+          <li><%= link_to "About", welcome_about_path %></li>
+          <div class="pull-right user-info">
+            <% if current_user %>
+              <%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
+              Hello <%= link_to (current_user.name || current_user.email), current_user %>!
+              <%= link_to edit_user_registration_path, class: 'btn btn-mini' do %>
+                <i class="icon-user"> </i>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-mini' do %>
+                <i class="icon-share-alt"> </i>
+              <% end %>
+            <% else %>
+              <%= link_to "Sign In", new_user_session_path %> or 
+              <%= link_to "Sign Up", new_user_registration_path %>
+            <% end %>
+          </div>
+        </ul>
       </div>
-
-  	</ul>
+    </div>
 
   	<% if flash[:notice] %>
       <div class="alert alert-success">
