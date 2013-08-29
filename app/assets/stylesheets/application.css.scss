@@ -1,6 +1,12 @@
 @import "bootstrap-custom";
 @import "bootstrap";
 
+@font-face {
+  font-family: "Absurdidad";
+  src: url('/assets/images/fonts/Mission Gothic Bold Italic.otf');
+}
+
+
 .user-info {
   margin-top: 9px;
 }
@@ -30,6 +36,24 @@ body {
   font-family: 'Roboto' sans-serif;
 }
 
+.logo {
+	font-family: 'Luckiest Guy';
+	color: #BBFF9D;
+	text-shadow: 2px 2px $highlight;
+	letter-spacing: 2px;
+}
+
+.space {
+	height: 250px;
+	width: 2000px;
+}
+
+.btn-inverse {
+	background-color: $highlight;
+	background-image: none;
+	background-image: -webkit-gradient(linear, 0 0, 0 75%, from(lighten($highlight, 5)), to($highlight));
+}
+
 
 .content {
 	max-width: 1000px;
@@ -41,13 +65,19 @@ body {
 	background: image-url("Tomatoes.jpg");
 	max-width: 1279px;
 	max-height: 1000px;
-	color: #999999;
+	color: #EBDADA;
 	box-shadow: 0 0 2px 0 #CCC;
+	position: aboslute;
 }
 
 .btn.btn-primary.btn-large {
 	border-style: solid;
 	border-width: 2px;
+}
+
+#monitor {
+	position: relative;
+	right: -50px;
 }
 
 
